@@ -13,7 +13,7 @@ function ConnectWalletButton() {
           key={connector.id}
           onClick={() => connect({ connector })}
         >
-          {connector.name}
+          Connect
           {!connector.ready && " (unsupported)"}
           {isLoading &&
             connector.id === pendingConnector?.id &&

@@ -1,11 +1,18 @@
 import Home from "../pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
-function Routes() {
+function Routess() {
   return (
-    <div>
-      <Home />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navbar />}>
+          <Route index element={<Home />} />
+          <Route path="community" element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default Routes;
+export default Routess;
