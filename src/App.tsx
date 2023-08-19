@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import Routes from "./routes/Routes";
 import { WagmiConfig, createConfig, configureChains, mainnet } from "wagmi";
