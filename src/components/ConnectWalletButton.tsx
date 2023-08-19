@@ -17,7 +17,7 @@ function ConnectWalletButton() {
           {!connector.ready && " (unsupported)"}
           {isLoading &&
             connector.id === pendingConnector?.id &&
-            " (connecting)"}
+            " (connecting testing)"}
         </button>
       ))}
 
