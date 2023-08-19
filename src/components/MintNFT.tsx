@@ -13,12 +13,12 @@ function MintNFT() {
       if (account && account.address) {
         console.log(account.address, "account address metamask");
         setWalletAddress(account.address); // Assuming setWalletAddress is the setter for the account state
+        console.log(config);
       }
     }
 
     fetchAccount();
   }, []);
-  // address: "0x2b0cb13623824dec1cbfac5926229b161c947b36",
   const { config } = usePrepareContractWrite({
     address: "0x0BF5f3C80C2fE5575c1c2c787B352868fdf76858",
     abi: abi,
