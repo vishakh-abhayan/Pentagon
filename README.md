@@ -1,6 +1,7 @@
 # Open-Source Community Learning Platform
 
-<img width="1438" alt="Screenshot 2023-08-20 at 12 58 01 PM" src="https://github.com/vishakh-abhayan/Hack_GTA/assets/94307781/28fff1c0-826b-4e8f-8cb8-58a1b0ced8fd">
+<img width="1440" alt="Screenshot 2023-08-20 at 3 10 11 PM" src="https://github.com/vishakh-abhayan/Hack_GTA/assets/94307781/66519a42-2cf5-477d-a1e0-7c174f66133d">
+
 
 
 Welcome to the Open-Source Community Learning Platform project! This platform aims to provide a space for communities to collaborate, learn, and share educational resources. The platform leverages Web3 technologies and MetaMask for authentication, and it utilizes NFTs to reward users upon achieving course milestones.
