@@ -1,5 +1,3 @@
-import avatar from "../assets/avatar.png";
-
 export default function Chats() {
   return (
     <div className="    h-screen w-full">
