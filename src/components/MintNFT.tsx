@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePrepareContractWrite, useContractWrite, useAccount } from "wagmi";
 import abi from "./web3/abi.json";
+import Button from "@mui/material/Button";
 
 function MintNFT() {
   const [walletAddress, setWalletAddress] = useState("");
@@ -12,6 +13,7 @@ function MintNFT() {
     async function fetchAccount() {
       if (account && account.address) {
         console.log(account.address, "account address metamask");
+        localStorage.setItem("account", account.address);
         setWalletAddress(account.address); // Assuming setWalletAddress is the setter for the account state
       }
     }
@@ -29,9 +31,16 @@ function MintNFT() {
   const { write } = useContractWrite(config);
 
   return (
-    <div>
-      <button onClick={() => write?.()}>Mint NFT</button>
-    </div>
+    // <div className="">
+    <Button
+      className=""
+      variant="contained"
+      color="success"
+      onClick={() => write?.()}
+    >
+      Mint NFT
+    </Button>
+    // </div>
   );
 }
 

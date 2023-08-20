@@ -1,5 +1,8 @@
 // import { useState, useEffect, useRef } from "react";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { useConnect } from "wagmi";
+import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 function ConnectWalletButton() {
   const { connect, connectors, error, isLoading, pendingConnector } =
@@ -7,21 +10,30 @@ function ConnectWalletButton() {
   return (
     <div>
       {connectors.map((connector) => (
-        <button
-          className="btn p-3 my-9 text-white hover:bg-[#0DAAAA] hover:shadow-xl transition duration-200 ease-in-out flex justify-center items-center"
+        <Button
+          className="mt-10 "
           disabled={!connector.ready}
           key={connector.id}
           onClick={() => connect({ connector })}
+          variant="contained"
         >
-          {connector.name}
+          Connect {connector.name}
           {!connector.ready && " (unsupported)"}
           {isLoading &&
             connector.id === pendingConnector?.id &&
             " (connecting testing)"}
-        </button>
+        </Button>
       ))}
 
-      {error && <div>{error.message}</div>}
+      {error && (
+        <div className="relative mt-40 left-96">
+          <Stack sx={{ width: "100%" }} spacing={2}>
+            <Alert variant="filled" severity="error">
+              {error.message}
+            </Alert>
+          </Stack>
+        </div>
+      )}
     </div>
   );
 }
