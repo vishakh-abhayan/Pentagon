@@ -1,8 +1,12 @@
 import { DataGrid, GridColDef, GridCellParams } from "@mui/x-data-grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { Account, ID, Databases } from "appwrite";
+import { v4 as uuidv4 } from "uuid";
+import client from "../api/config";
 import { useState } from "react";
 function Communities() {
+  const databases = new Databases(client);
   const [Description, setDescription] = useState("");
   const [Name, setName] = useState("");
   const [Topic, SetTopic] = useState("");
@@ -17,6 +21,37 @@ function Communities() {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setDescription(event.target.value);
+  };
+  function generateValidUuid() {
+    const rawUuid = uuidv4(); // Generate a random UUID
+
+    const validUuid = rawUuid.replace(/[-_]/g, "").toLowerCase();
+
+    const truncatedUuid = validUuid.slice(0, 36);
+
+    return truncatedUuid;
+  }
+  const uploadToDb = async () => {
+    if (Topic && Name && Description) {
+      const validUuid = await generateValidUuid();
+      const promise = databases.createDocument(
+        "64e0c9479004f99eaa8c",
+        "64e197538e5fb31e7871",
+        `${validUuid}`,
+        { name: Name, topic: Topic, description: Description }
+      );
+
+      promise.then(
+        function (response) {
+          console.log(response); // Success
+        },
+        function (error) {
+          console.log(error); // Failure
+        }
+      );
+    } else {
+      console.log("Topic, Name, and Description must not be empty");
+    }
   };
 
   const columns: GridColDef[] = [
@@ -116,7 +151,11 @@ function Communities() {
             </div>
           </div>
           <div className="m-48">
-            <Button variant="contained" disableElevation>
+            <Button
+              variant="contained"
+              onClick={() => uploadToDb()}
+              disableElevation
+            >
               Create Community
             </Button>
           </div>
