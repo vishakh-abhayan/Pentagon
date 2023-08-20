@@ -1,7 +1,7 @@
-import { DataGrid, GridColDef, GridCellParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Account, ID, Databases } from "appwrite";
+import { Databases } from "appwrite";
 import { v4 as uuidv4 } from "uuid";
 import client from "../api/config";
 import { useState } from "react";
@@ -67,8 +67,8 @@ function Communities() {
       field: "joinButton",
       headerName: "Join Event",
       width: 250,
-      renderCell: (params: GridCellParams) => {
-        const rowId = params.id;
+      renderCell: () => {
+        // const rowId = params.id;
         return (
           <button
             className="bg-blue-400 font-bold p-1 w-16 rounded-[7px]"
