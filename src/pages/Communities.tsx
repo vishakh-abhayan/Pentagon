@@ -1,16 +1,38 @@
 import { DataGrid, GridColDef, GridCellParams } from "@mui/x-data-grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Account, ID, Databases } from "appwrite";
+import { Databases } from "appwrite";
 import { v4 as uuidv4 } from "uuid";
 import client from "../api/config";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 function Communities() {
   const databases = new Databases(client);
   const [Description, setDescription] = useState("");
   const [Name, setName] = useState("");
   const [Topic, SetTopic] = useState("");
+  const [Rows, setRows] = useState([]);
+  // let Rows = "";
+  const getDataFromDB = async () => {
+    try {
+      let promise = databases.listDocuments(
+        "64e1a4801d6c1827fae7",
+        "64e1a4858cf644cbd7a4"
+      );
+      const data = (await promise).documents;
+      console.log(data, "longing data");
+      setRows(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    const callData = async () => {
+      await getDataFromDB();
+    };
+    callData();
+  }, []);
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -57,10 +79,10 @@ function Communities() {
   };
 
   const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 100 },
+    { field: "$createdAt", headerName: "Created At", width: 100 },
     {
       field: "firstName",
-      headerName: "Event name",
+      name: "Event name",
       width: 250,
     },
     {
@@ -85,14 +107,20 @@ function Communities() {
       width: 250,
     },
   ];
-
-  const rows = [
-    { id: 1, firstName: "Web3Sangam", Name: "Jon", Count: 35 },
-    { id: 2, firstName: "Foss United", Name: "Cersei", Count: 42 },
-    { id: 3, firstName: "Debian Meet", Name: "Jaime", Count: 45 },
-    { id: 4, firstName: "Amoung Us", Name: "Arya", Count: 16 },
-    { id: 5, firstName: "GTA 5", Name: "Daenerys", Count: null },
-  ];
+  // [{ h: "hi" }].map((e) => {
+  //   e.h;
+  //   return "hiii";
+  // }); // [ ' hiii" ]
+  // const rows = [
+  //   { id: 1, firstName: "Web3Sangam", Name: "Jon", Count: 35 },
+  //   { id: 2, firstName: "Foss United", Name: "Cersei", Count: 42 },
+  //   { id: 3, firstName: "Debian Meet", Name: "Jaime", Count: 45 },
+  //   { id: 4, firstName: "Amoung Us", Name: "Arya", Count: 16 },
+  //   { id: 5, firstName: "GTA 5", Name: "Daenerys", Count: null },
+  // ];
+  console.log(Rows);
+  const rows = Object.values(Rows);
+  console.log(rows, "rows");
 
   return (
     <div>
@@ -111,7 +139,7 @@ function Communities() {
         </div>
         <div style={{ height: 400, width: "50%", margin: 20 }}>
           <DataGrid
-            rows={rows}
+            rows={Rows}
             columns={columns}
             initialState={{
               pagination: {
