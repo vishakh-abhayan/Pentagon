@@ -5,6 +5,7 @@ import { Account, ID, Databases } from "appwrite";
 import { v4 as uuidv4 } from "uuid";
 import client from "../api/config";
 import { useState } from "react";
+import Navbar from "../components/Navbar";
 function Communities() {
   const databases = new Databases(client);
   const [Description, setDescription] = useState("");
@@ -69,7 +70,7 @@ function Communities() {
         const rowId = params.id;
         return (
           <button
-            className="bg-blue-400 p-2 rounded-sm"
+            className="bg-blue-400 font-bold p-1 w-16 rounded-[7px]"
             // onClick={() => handleJoinEvent(rowId)}
           >
             Join
@@ -77,18 +78,24 @@ function Communities() {
         );
       },
     },
+    {
+      field: "Count",
+      headerName: "Participants",
+      width: 250,
+    },
   ];
 
   const rows = [
-    { id: 1, firstName: "Web3Sangam", Name: "Jon", age: 35 },
-    { id: 2, firstName: "Foss United", Name: "Cersei", age: 42 },
-    { id: 3, firstName: "Debian Meet", Name: "Jaime", age: 45 },
-    { id: 4, firstName: "Amoung Us", Name: "Arya", age: 16 },
-    { id: 5, firstName: "GTA 5", Name: "Daenerys", age: null },
+    { id: 1, firstName: "Web3Sangam", Name: "Jon", Count: 35 },
+    { id: 2, firstName: "Foss United", Name: "Cersei", Count: 42 },
+    { id: 3, firstName: "Debian Meet", Name: "Jaime", Count: 45 },
+    { id: 4, firstName: "Amoung Us", Name: "Arya", Count: 16 },
+    { id: 5, firstName: "GTA 5", Name: "Daenerys", Count: null },
   ];
 
   return (
     <div>
+      <Navbar />
       <div
         style={{
           height: "100vh",
@@ -118,8 +125,8 @@ function Communities() {
         <div className="text-center">
           <h1 className="text-2xl mb-10 font-bold">Create A New Community</h1>
         </div>
-        <div className="flex">
-          <div className="flex-col justify-start">
+        <div className="flex-col">
+          <div className="flex-col justify-center text-center">
             <div className="m-10 ">
               <TextField
                 className="w-[500px]"
@@ -138,9 +145,9 @@ function Communities() {
                 onChange={handleTopicChange}
               />
             </div>
-            <div className="m-10 ">
+            <div className="m-10  ">
               <TextField
-                className="w-[500px]"
+                className="w-[500px]  "
                 multiline
                 label="Description"
                 rows={8}
@@ -150,7 +157,7 @@ function Communities() {
               />
             </div>
           </div>
-          <div className="m-48">
+          <div className="m-10 flex justify-center text-center">
             <Button
               variant="contained"
               onClick={() => uploadToDb()}
