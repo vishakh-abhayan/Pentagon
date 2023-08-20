@@ -1,3 +1,61 @@
+# Open-Source Community Learning Platform
+
+Welcome to the Open-Source Community Learning Platform project! This platform aims to provide a space for communities to collaborate, learn, and share educational resources. The platform leverages Web3 technologies and MetaMask for authentication, and it utilizes NFTs to reward users upon achieving course milestones.
+
+## Table of Contents
+
+- [About](#about)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [License](#license)
+
+## About
+
+The Open-Source Community Learning Platform is designed to foster community-based learning by offering a space where users can engage in courses, share valuable resources, and collaborate through group chats. The platform utilizes NFTs as incentives for both learners and quality resource creators, creating a dynamic learning environment.
+
+## Features
+
+- User authentication using MetaMask wallet
+- Community-based learning through courses and resources
+- NFT rewards for achieving course milestones
+- Group chats for community engagement
+- Customizable channels for specific courses
+- Exclusive features for milestone holders
+
+## Technologies Used
+
+- TypeScript
+- React (Frontend)
+- Solidity (Smart Contracts)
+- Web3.js (Integration with Ethereum)
+- MetaMask (Authentication and Wallet)
+- (Add any other technologies your project relies on)
+
+## Getting Started
+
+Follow these steps to set up and run the project locally:
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/your-username/community-learning-platform.git
+   cd community-learning-platform
+   ```
+
+```bash
+      cd Hack_GTA
+```
+
+```bash
+   yarn
+```
+
+```bash
+      yarn dev
+```
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Chats() {
   return (
     <div className="    h-screen w-full">
@@ -5,13 +7,33 @@ export default function Chats() {
       <div className="px-5 py-5 flex justify-between items-center bg-white border-b-2">
         <div className="font-semibold text-2xl">Group Chats</div>
         <div className="w-1/2">
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="search IRL"
-            className="rounded-2xl bg-gray-100 py-3 px-5 w-full"
-          />
+          <ul className="md:px-2 ml-auto md:flex md:space-x-2 absolute md:relative top-full left-0 right-0">
+            <li>
+              <Link
+                to="/community"
+                className="flex md:inline-flex p-4 items-center hover:bg-gray-50 text-xl font-bold"
+              >
+                <span>Communites</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/networks"
+                className="flex md:inline-flex p-4 items-center hover:bg-gray-50 text-xl font-bold"
+              >
+                <span>Chats</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/resources"
+                className="flex md:inline-flex p-4 items-center hover:bg-gray-50 text-xl font-bold"
+              >
+                <span>Blogs</span>
+              </Link>
+            </li>
+          </ul>
         </div>
         <div className="h-12 w-12 p-2 bg-yellow-500 rounded-full text-white font-semibold flex items-center justify-center">
           @
@@ -26,7 +48,7 @@ export default function Chats() {
           <div className="border-b-2 py-4 px-2">
             <input
               type="text"
-              placeholder="search chatting"
+              placeholder="search chanale"
               className="py-2 px-2 border-2 border-gray-200 rounded-2xl w-full"
             />
           </div>

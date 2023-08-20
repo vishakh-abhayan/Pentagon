@@ -1,6 +1,9 @@
+import Navbar from "../components/Navbar";
+
 function Resources() {
   return (
     <div className="w-full h-full">
+      <Navbar />
       <div className="container outline mt-5 max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm ">
         <div className="flex items-center justify-between">
           <span className="text-sm dark:text-gray-400">Jun 1, 2020</span>
@@ -44,6 +47,7 @@ function Resources() {
             </a>
           </div>
         </div>
+        N
       </div>
       <div className="container outline mt-5 max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm ">
         <div className="flex items-center justify-between">

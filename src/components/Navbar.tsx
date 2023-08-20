@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="flex px-4 border-b md:shadow-lg items-center relative">
-      <div className="text-lg font-bold md:py-0 py-4">Logo</div>
+      <Link to="/">
+        <div className="text-lg font-bold md:py-0 py-4 ">Logo</div>
+      </Link>
       <ul className="md:px-2 ml-auto md:flex md:space-x-2 absolute md:relative top-full left-0 right-0">
         <li>
           <Link
