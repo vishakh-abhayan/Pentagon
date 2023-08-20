@@ -33,7 +33,7 @@ function MintNFT() {
   return (
     // <div className="">
     <Button
-      className=""
+      className=" w-48"
       variant="contained"
       color="success"
       onClick={() => write?.()}
