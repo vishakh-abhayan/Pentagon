@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 function MintNFT() {
   const [walletAddress, setWalletAddress] = useState("");
   const metadataURL =
-    "https://ipfs.io/ipfs/bafybeih3b6aqffzx6yhiv4ohlgk4cp62saszb7doyg5k6r2drzny3n5uqy/1.json";
+    "https://ipfs.io/ipfs/bafybeia6eardnrmgilqduj4j5m24phvbbmaqqdae43x65ghhnzab7j7imu/1.json";
   const account = useAccount();
 
   useEffect(() => {

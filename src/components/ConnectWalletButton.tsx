@@ -1,12 +1,13 @@
 // import { useState, useEffect, useRef } from "react";
-import { useConnect } from "wagmi";
+import { useConnect, useAccount } from "wagmi";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
 function ConnectWalletButton() {
-  const { connect, connectors, error, isLoading, pendingConnector } =
-    useConnect();
+  const { connect, connectors, error, isLoading } = useConnect();
+  const { isConnected } = useAccount();
+
   return (
     <div>
       {connectors.map((connector) => (
@@ -19,14 +20,31 @@ function ConnectWalletButton() {
         >
           Connect {connector.name}
           {!connector.ready && " (unsupported)"}
-          {isLoading &&
-            connector.id === pendingConnector?.id &&
-            " (connecting testing)"}
         </Button>
       ))}
 
+      {isConnected && (
+        <div className=" mt-40 ">
+          <Stack sx={{ width: "100%" }} spacing={2}>
+            <Alert variant="filled" severity="success">
+              Wallet Connected Success
+            </Alert>
+          </Stack>
+        </div>
+      )}
+
+      {isLoading && (
+        <div className=" mt-40 ">
+          <Stack sx={{ width: "100%" }} spacing={2}>
+            <Alert variant="filled" severity="info">
+              Connecting Wallet
+            </Alert>
+          </Stack>
+        </div>
+      )}
+
       {error && (
-        <div className="relative mt-40 left-96">
+        <div className=" mt-40 ">
           <Stack sx={{ width: "100%" }} spacing={2}>
             <Alert variant="filled" severity="error">
               {error.message}
