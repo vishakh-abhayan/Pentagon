@@ -36,28 +36,38 @@ The Open-Source Community Learning Platform is designed to foster community-base
 - MetaMask (Authentication and Wallet)
 - (Add any other technologies your project relies on)
 
+
 ## Getting Started
 
-Follow these steps to set up and run the project locally:
+### Prerequisites
+
+- Node.js: Make sure you have Node.js installed on your machine.
+
+### Installation
 
 1. Clone the repository:
 
-   ```sh
-   git clone https://github.com/your-username/community-learning-platform.git
-   cd community-learning-platform
+   ```shell
+   git clone https://github.com/your-username/TodoNow.git
+   ```
+2. Navigate to the project directory:
+
+   ```shell
+    cd /TodoNow
    ```
 
-```bash
-      cd Hack_GTA
-```
+3. Install the project dependencies:
 
-```bash
-   yarn
-```
+   ```shell
+    npm install
+   ```
 
-```bash
-      yarn dev
-```
+4. Start the development server:
+
+   ```shell
+    npm run dev
+   ```
+
 
 # React + TypeScript + Vite
 
