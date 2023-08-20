@@ -36,11 +36,12 @@ function Communities() {
     if (Topic && Name && Description) {
       const validUuid = await generateValidUuid();
       const promise = databases.createDocument(
-        "64e0c9479004f99eaa8c",
-        "64e197538e5fb31e7871",
+        "64e1a4801d6c1827fae7",
+        "64e1a4858cf644cbd7a4",
         `${validUuid}`,
         { name: Name, topic: Topic, description: Description }
       );
+      console.log(promise, "promise console.log");
 
       promise.then(
         function (response) {
