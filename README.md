@@ -35,7 +35,7 @@ The Open-Source Community Learning Platform is designed to foster community-base
 - Solidity (Smart Contracts)
 - Web3.js (Integration with Ethereum)
 - MetaMask (Authentication and Wallet)
-- (Add any other technologies your project relies on)
+
 
 
 ## Getting Started
