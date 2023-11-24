@@ -1,27 +1,57 @@
 // import { useState, useEffect, useRef } from "react";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { useConnect, useAccount } from "wagmi";
+import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 function ConnectWalletButton() {
-  const { connect, connectors, error, isLoading, pendingConnector } =
-    useConnect();
+  const { connect, connectors, error, isLoading } = useConnect();
+  const { isConnected } = useAccount();
+
   return (
     <div>
       {connectors.map((connector) => (
-        <button
-          className="btn p-3 my-9 text-white hover:bg-[#0DAAAA] hover:shadow-xl transition duration-200 ease-in-out flex justify-center items-center"
+        <Button
+          className="mt-10 "
           disabled={!connector.ready}
           key={connector.id}
           onClick={() => connect({ connector })}
+          variant="contained"
         >
-          {connector.name}
+          Connect {connector.name}
           {!connector.ready && " (unsupported)"}
-          {isLoading &&
-            connector.id === pendingConnector?.id &&
-            " (connecting testing)"}
-        </button>
+        </Button>
       ))}
 
-      {error && <div>{error.message}</div>}
+      {isConnected && (
+        <div className=" mt-40 ">
+          <Stack sx={{ width: "100%" }} spacing={2}>
+            <Alert variant="filled" severity="success">
+              Wallet Connected Success
+            </Alert>
+          </Stack>
+        </div>
+      )}
+
+      {isLoading && (
+        <div className=" mt-40 ">
+          <Stack sx={{ width: "100%" }} spacing={2}>
+            <Alert variant="filled" severity="info">
+              Connecting Wallet
+            </Alert>
+          </Stack>
+        </div>
+      )}
+
+      {error && (
+        <div className=" mt-40 ">
+          <Stack sx={{ width: "100%" }} spacing={2}>
+            <Alert variant="filled" severity="error">
+              {error.message}
+            </Alert>
+          </Stack>
+        </div>
+      )}
     </div>
   );
 }
